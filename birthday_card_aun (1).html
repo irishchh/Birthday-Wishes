@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aun!</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f6f2;
+    font-family: 'Lato', sans-serif;
+  }
+  .card-wrap {
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .confetti-piece {
+    position: absolute;
+    border-radius: 2px;
+    animation: fall linear infinite;
+    opacity: 0;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(620px) rotate(720deg); opacity: 0; }
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #e8e4df;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 460px;
+    padding: 3rem 2.5rem 2.5rem;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  }
+  .stars {
+    font-size: 22px;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    animation: twinkle 2s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  .cake-area {
+    margin: 1.5rem auto;
+    width: 120px;
+    height: 120px;
+  }
+  .cake-area svg { width: 120px; height: 120px; }
+  .flame {
+    animation: flicker 0.5s ease-in-out infinite alternate;
+    transform-origin: 50% 90%;
+  }
+  @keyframes flicker {
+    0% { transform: scaleX(1) scaleY(1); }
+    100% { transform: scaleX(0.85) scaleY(1.12); }
+  }
+  .to-text {
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a09890;
+    margin-bottom: 0.4rem;
+  }
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem;
+    line-height: 1.1;
+  }
+  .happy-bday {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #D4537E;
+    margin-bottom: 1.5rem;
+  }
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(to right, #7F77DD, #D4537E);
+    border-radius: 2px;
+    margin: 0 auto 1.5rem;
+  }
+  .message {
+    font-size: 15px;
+    font-weight: 300;
+    color: #6b6560;
+    line-height: 1.8;
+    max-width: 320px;
+    margin: 0 auto 1rem;
+  }
+</style>
+</head>
+<body>
+<div class="card-wrap" id="wrap">
+  <div class="card">
+    <div class="stars">✦ ✦ ✦</div>
+    <div class="cake-area">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="68" width="80" height="36" rx="8" fill="#F4C0D1"/>
+        <rect x="28" y="52" width="64" height="22" rx="6" fill="#9FE1CB"/>
+        <rect x="20" y="90" width="80" height="4" rx="2" fill="#ED93B1"/>
+        <rect x="28" y="68" width="64" height="3" rx="1" fill="#5DCAA5"/>
+        <line x1="60" y1="52" x2="60" y2="34" stroke="#B4B2A9" stroke-width="3" stroke-linecap="round"/>
+        <ellipse class="flame" cx="60" cy="30" rx="6" ry="10" fill="#EF9F27"/>
+        <ellipse cx="60" cy="33" rx="3" ry="5" fill="#FAC775"/>
+        <circle cx="38" cy="80" r="4" fill="#EEEDFE"/>
+        <circle cx="60" cy="80" r="4" fill="#E6F1FB"/>
+        <circle cx="82" cy="80" r="4" fill="#FBEAF0"/>
+        <circle cx="45" cy="62" r="3" fill="#FAECE7"/>
+        <circle cx="75" cy="62" r="3" fill="#EAF3DE"/>
+      </svg>
+    </div>
+    <p class="to-text">wishing a wonderful</p>
+    <h1 class="name">Aun</h1>
+    <p class="happy-bday">a very happy birthday</p>
+    <div class="divider"></div>
+    <p class="message">
+      May this special day bring you joy, laughter, and everything your heart desires. Here's to you and all the wonderful moments ahead!
+    </p>
+  </div>
+</div>
+<script>
+  const colors = ['#7F77DD','#D4537E','#1D9E75','#EF9F27','#378ADD','#E24B4A','#B5D4F4','#F0997B','#9FE1CB'];
+  const wrap = document.getElementById('wrap');
+  for (let i = 0; i < 28; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * -10}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      width: ${6 + Math.random() * 6}px;
+      height: ${6 + Math.random() * 6}px;
+      animation-delay: ${Math.random() * 4}s;
+      animation-duration: ${3 + Math.random() * 3}s;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+    `;
+    wrap.appendChild(p);
+  }
+</script>
+</body>
+</html>
